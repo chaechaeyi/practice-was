@@ -1,5 +1,7 @@
 package com.example;
 
+import com.example.calculator.domain.Calculator;
+import com.example.calculator.domain.PositiveNumber;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -51,10 +53,27 @@ public class CustomWebApplicationServer {
                     BufferedReader br = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8));
                     DataOutputStream dos = new DataOutputStream(out);
 
-                    String line;
+                    HttpRequest httpRequest = new HttpRequest(br);
+
+                    if(httpRequest.isGetRequest() && httpRequest.matchPath("/calculate")){
+                        QueryStrings queryStrings = httpRequest.getQueryStrings();
+
+                        int operand1 = Integer.parseInt(queryStrings.getValue("operand1"));
+                        String operator = queryStrings.getValue("operator");
+                        int operand2 = Integer.parseInt(queryStrings.getValue("operand2"));
+
+                        int result = Calculator.calculate(new PositiveNumber(operand1), operator, new PositiveNumber(operand2));
+                        byte[] body = String.valueOf(result).getBytes(StandardCharsets.UTF_8);
+
+                        HttpResponse response = new HttpResponse(dos);
+                        response.response200Header("application/json", body.length);
+                        response.responseBody(body);
+
+                    }
+                   /* String line;
                     while ((line = br.readLine()) != "") {
                         logger.info(line);
-                    }
+                    }*/
                 }
 
                 /**
