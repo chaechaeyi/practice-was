@@ -1,0 +1,6 @@
+//GET http://localhost:8080
+GET http://localhost:8080/calculate?operand1=11&operator=*&operand2=55
+//01:10:41.611 [main] INFO com.example.CustomWebApplicationServer - Host: localhost:8080
+//01:10:41.611 [main] INFO com.example.CustomWebApplicationServer - Connection: Keep-Alive
+//01:10:41.611 [main] INFO com.example.CustomWebApplicationServer - User-Agent: Apache-HttpClient/4.5.13 (Java/11.0.14.1)
+//01:10:41.611 [main] INFO com.example.CustomWebApplicationServer - Accept-Encoding: gzip,deflate
