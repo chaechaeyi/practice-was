@@ -1,0 +1,27 @@
+1. CGI 프로그램과 서블릿
+인터프리터 방식 CGI 프로그램
+웹서버 <-> script engine <-> script 파일
+
+서블릿과 서블릿 컨테이너
+웹서버 <-> servlet container <-> servlet 파일
+
+container와 engine의 차이?
+container는 라이프사이클을 관리
+
+2. servlet이란
+- 자바에서 웹 어플리케이션을 만드는 기술
+- 자바에서 동적인 웹 페이지를 구현하기 위한 표준
+
+3. servlet container란?
+- 서블릿의 생성부터 소멸까지의 라이프사이클 관리 역할
+- 웹 서버와 소켓을 만들고 통신하는 과정을 대신 처리해준디ㅏ.
+개발자는 비즈니스 로직에만 집정
+- 서블릿 객체를 싱글톤으로 관리
+> 상태 유지하게 설계하면 안됨 -> thread safe하지 않기 때문이다.
+
+4. was vs 서블릿 컨테이너
+- was는 서블릿 컨테이너를 포함하는 개념
+- was는 매 요청마다 thread pool에서 기존 thread 사용
+- was의 주요 튜닝 포인트는 max thread 수
+
+client <-> Web Server <-> WAS(Web Container -> thread -> servlet(init, service, destroy) ) <-- DB Connection --> DB
