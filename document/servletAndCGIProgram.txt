@@ -25,3 +25,18 @@ container는 라이프사이클을 관리
 - was의 주요 튜닝 포인트는 max thread 수
 
 client <-> Web Server <-> WAS(Web Container -> thread -> servlet(init, service, destroy) ) <-- DB Connection --> DB
+
+5. 통신 과정
+1. requst
+== tomcat filter ==
+2. request
+3. Dispatcher Servlet(Hadler Mapping Selector)
+4. Handler Interceptors
+5. Controller
+6. Business Service Facade
+7. Controller
+8. Handler Interceptors
+9. DispatcherServlet(View Resolver)
+10. response
+== tomcat filter ==
+11. response
